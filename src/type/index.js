@@ -1,0 +1,5 @@
+export default {
+  LOADING: 'LOADING',
+  SUCCESSFUL: 'SUCCESSFUL',
+  FAILURE: 'FAILURE',
+};
