@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { List, Typography, ListSubheader } from '@material-ui/core';
 import Comment from './Comment';
 
 const CommentList = ({ comments }) => (
   <div>
-    {comments.map(comment => (
-      <Comment key={comment.id} comment={comment} />
-    ))}
+    <List>
+      <ListSubheader>
+        <Typography>Comments:</Typography>
+      </ListSubheader>
+      {comments.map(comment => (
+        <Comment key={comment.id} comment={comment} />
+      ))}
+    </List>
   </div>
 );
 

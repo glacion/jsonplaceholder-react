@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { LinearProgress, Divider } from '@material-ui/core';
 import Post from './Post';
 import CommentList from '../comment';
 
 const PostDetail = ({
   comments, post, loading, error,
 }) => {
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <LinearProgress />;
   if (error !== '') {
     return (
       <div>
@@ -19,6 +20,7 @@ const PostDetail = ({
   return (
     <div>
       <Post post={post} />
+      <Divider />
       <CommentList comments={comments} />
     </div>
   );
@@ -34,6 +36,7 @@ PostDetail.propTypes = {
     }),
   ).isRequired,
   post: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
   }),
@@ -45,6 +48,7 @@ PostDetail.propTypes = {
 // Even then, it won't be shown, it is only here to satisfy propTypes.
 PostDetail.defaultProps = {
   post: {
+    id: 0,
     title: 'Loading...',
     body: 'Loading...',
   },

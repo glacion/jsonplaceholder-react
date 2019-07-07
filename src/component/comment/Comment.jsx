@@ -1,14 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ListItem, ListItemText, Typography } from '@material-ui/core';
 
 const Comment = ({ comment: { name, email, body } }) => (
-  <div>
-    {body}
-,
-    {email}
-,
-    {name}
-  </div>
+  <ListItem>
+    <ListItemText
+      primary={name}
+      secondary={(
+        <React.Fragment>
+          <Typography component="span" variant="subtitle2" color="textPrimary">
+            {email}
+          </Typography>
+          {' -- '}
+          {body}
+        </React.Fragment>
+)}
+    />
+  </ListItem>
 );
 
 Comment.propTypes = {

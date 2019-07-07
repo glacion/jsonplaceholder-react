@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { List, LinearProgress } from '@material-ui/core';
 import Post from './Post';
 
 const PostList = ({ loading, error, posts }) => {
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <LinearProgress />;
   if (error !== '') {
     return (
       <div>
@@ -14,14 +14,13 @@ const PostList = ({ loading, error, posts }) => {
       </div>
     );
   }
-  return posts.map(post => (
-    <span key={post.id}>
-      <Post post={post} />
-      <Link to={`/${post.id}`}>
-        <button type="button">{post.id}</button>
-      </Link>
-    </span>
-  ));
+  return (
+    <List>
+      {posts.map(post => (
+        <Post key={post.id} post={post} link />
+      ))}
+    </List>
+  );
 };
 
 PostList.propTypes = {
