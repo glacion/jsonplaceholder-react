@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { PostList, PostDetail } from '../post';
-import fetchAction from '../../state/action';
+import { fetchAction } from '../../state';
 
 class App extends Component {
   componentDidMount() {

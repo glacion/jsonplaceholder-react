@@ -1,3 +1,3 @@
-import initialize from './component/container';
+import initialize from './component';
 
 initialize();
