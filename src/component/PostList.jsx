@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import Post from './Post';
 
-const Posts = ({ loading, error, posts }) => {
+const PostList = ({ loading, error, posts }) => {
   if (loading) return <div>Loading...</div>;
   if (error !== '') {
     return (
@@ -13,10 +14,17 @@ const Posts = ({ loading, error, posts }) => {
       </div>
     );
   }
-  return posts.map(post => <Post key={post.id} post={post} />);
+  return posts.map(post => (
+    <span key={post.id}>
+      <Post post={post} />
+      <Link to={`/${post.id}`}>
+        <button type="button">{post.id}</button>
+      </Link>
+    </span>
+  ));
 };
 
-Posts.propTypes = {
+PostList.propTypes = {
   error: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   posts: PropTypes.arrayOf(
@@ -35,4 +43,4 @@ const mapStateToProps = state => ({
   posts: state.posts,
 });
 
-export default connect(mapStateToProps)(Posts);
+export default connect(mapStateToProps)(PostList);

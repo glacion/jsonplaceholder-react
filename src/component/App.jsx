@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Posts from './Posts';
+import { connect } from 'react-redux';
+import PostList from './PostList';
+import PostDetail from './PostDetail';
 import fetchAction from '../action';
 
 class App extends Component {
@@ -14,7 +15,8 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Route path="/" exact component={Posts} />
+        <Route path="/" exact component={PostList} />
+        <Route path="/:postId" exact component={PostDetail} />
       </Router>
     );
   }
