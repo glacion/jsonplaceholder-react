@@ -27,5 +27,5 @@ export default () => (dispatch) => {
       axios.get('https://jsonplaceholder.typicode.com/comments'),
     ])
     .then(axios.spread((posts, comments) => dispatch(loaded(posts.data, comments.data))))
-    .catch(error => dispatch(failure(error)));
+    .catch(error => dispatch(failure(error.message)));
 };

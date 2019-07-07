@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PostList from './PostList';
-import PostDetail from './PostDetail';
-import fetchAction from '../action';
+import { PostList, PostDetail } from '../post';
+import fetchAction from '../../state/action';
 
 class App extends Component {
   componentDidMount() {

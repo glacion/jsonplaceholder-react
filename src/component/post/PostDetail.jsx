@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Post from './Post';
+import CommentList from '../comment';
 
 const PostDetail = ({
   comments, post, loading, error,
@@ -14,12 +16,18 @@ const PostDetail = ({
       </div>
     );
   }
-  return <div>as</div>;
+  return (
+    <div>
+      <Post post={post} />
+      <CommentList comments={comments} />
+    </div>
+  );
 };
 
 PostDetail.propTypes = {
   comments: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
       body: PropTypes.string.isRequired,
@@ -30,6 +38,7 @@ PostDetail.propTypes = {
     body: PropTypes.string.isRequired,
   }),
   loading: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
 };
 
 // Not necessary unless the client directly asks for the post detail,
